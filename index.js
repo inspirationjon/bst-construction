@@ -31,23 +31,17 @@ class BST {
   contains(value) {
     let currentNode = this;
 
-    while (true) {
+    while (currentNode !== null) {
       if (value < currentNode.value) {
-        if (currentNode.left !== null) {
-          currentNode = currentNode.left;
-        } else {
-          return false;
-        }
-      } else if (value > currentNode.value) {
-        if (currentNode.right !== null) {
-          currentNode = currentNode.right;
-        } else {
-          return false;
-        }
+        currentNode = currentNode.left;
+      } else if (value < currentNode.value) {
+        currentNode = currentNode.right;
       } else {
         return true;
       }
     }
+
+    return false;
   }
 
   remove(value) {
